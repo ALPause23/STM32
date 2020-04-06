@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * @file    SPI/SPI_FLASH/stm32f4xx_conf.h  
+  * @file    ADC/ADC_DMA/stm32f4xx_conf.h  
   * @author  MCD Application Team
   * @version V1.8.0
   * @date    04-November-2016

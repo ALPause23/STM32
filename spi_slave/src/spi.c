@@ -22,21 +22,6 @@ void InitSPI1()
 	//SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
 	
 	SPI_Cmd(SPI1, ENABLE);
-		
-//	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
-//	SPI_InitTypeDef spi1;
-//	spi1.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
-//	spi1.SPI_Mode = SPI_Mode_Master;
-//	spi1.SPI_DataSize=SPI_DataSize_8b;
-//	spi1.SPI_CPOL = SPI_CPOL_Low;
-//	spi1.SPI_CPHA = SPI_CPHA_1Edge;
-//	spi1.SPI_NSS = SPI_NSS_Soft;
-//	spi1.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_256;
-//	spi1.SPI_FirstBit = SPI_FirstBit_LSB;
-//	//spi1.SPI_CRCPolynomial = 7;
-//	SPI_Init(SPI1, &spi1);
-//	SPI_Cmd(SPI1, ENABLE);
-//	SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
 }
 
 void InitGpioSpi()

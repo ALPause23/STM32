@@ -8,8 +8,6 @@
 #define HSE_VALUE    ((uint32_t)8000000)
 
 uint16_t data;
-volatile bool bsy, done = 0;
-volatile uint32_t timestamp;
 
 struct StatusBounce button;
 
@@ -58,27 +56,20 @@ int main(void)
 	SystemInit();
 	SystemCoreClockUpdate();
 	
-	InitGPIO();
 	InitSPI1();
 	InitTim3();
 	
 	InitTim2();
 	
 	InitButtonUSER();
-	//GPIO_SetBits(GPIOA, GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7); 
-	//InitEXTI();
 	
 	InitStructDef(button);
-	
+	SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Reset);
 	while(1)
 	{
-		//SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
-	
-		//SPI_I2S_SendData(SPI1, 100);
-		//while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY)==RESET);
 		SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
 		for(int i = 0; i < 100; i++);
-		SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Reset);
+		SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Reset);		
 		if(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == RESET & SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == SET)
 		{
 			data = SPI_I2S_ReceiveData(SPI1);
