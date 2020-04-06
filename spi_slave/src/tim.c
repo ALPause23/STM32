@@ -96,11 +96,11 @@ void TIM2_IRQHandler(void)
 //				}
 //			}
 //		}
-	if(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == SET)
-		{
-			SPI_I2S_SendData(SPI1, 0x0A);
-			while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY));
-		}
+//	if(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == SET)
+//		{
+//			SPI_I2S_SendData(SPI1, 0x0A);
+//			while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY));
+//		}
 	}
 	TIM_Cmd(TIM2, ENABLE);
 }

@@ -7,10 +7,8 @@
 
 #define HSE_VALUE    ((uint32_t)8000000)
 
-uint16_t data;
-
 struct StatusBounce button;
-
+uint16_t data = 0;
 void InitButtonUSER()
 {
 	GPIO_InitTypeDef gpioINT;
@@ -24,6 +22,34 @@ void InitButtonUSER()
 	gpioINT.GPIO_Speed = GPIO_Speed_50MHz;
 	gpioINT.GPIO_OType = GPIO_OType_PP;
 	GPIO_Init(GPIOA, &gpioINT);
+}
+
+
+int main(void)
+{
+	SystemInit();
+	SystemCoreClockUpdate();
+	
+	InitSPI1();
+	InitTim3();
+	
+	InitTim2();
+	
+	InitButtonUSER();
+	
+	InitStructDef(button);
+	SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Reset);
+	while(1)
+	{
+				
+//		if(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == RESET & SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == SET)
+//		{
+//			SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
+//			for(int i = 0; i < 100; i++);
+//			SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Reset);
+//			data = SPI_I2S_ReceiveData(SPI1);	
+//		}
+	}
 }
 
 //void InitEXTI()
@@ -50,32 +76,3 @@ void InitButtonUSER()
 //	NVIC_Init(&nvic);
 
 //}
-
-int main(void)
-{
-	SystemInit();
-	SystemCoreClockUpdate();
-	
-	InitSPI1();
-	InitTim3();
-	
-	InitTim2();
-	
-	InitButtonUSER();
-	
-	InitStructDef(button);
-	SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Reset);
-	while(1)
-	{
-				
-		if(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == RESET & SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == SET)
-		{
-			SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
-			for(int i = 0; i < 100; i++);
-			SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Reset);
-			data = SPI_I2S_ReceiveData(SPI1);	
-		}
-	}
-}
-
-

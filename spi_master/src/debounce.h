@@ -23,5 +23,6 @@
 	extern struct StatusBounce button;
 	
 	void InitStructDef();
+	void EventForButton();
 
 #endif

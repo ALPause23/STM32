@@ -1,7 +1,9 @@
 #include "spi.h"
+#include "main.h"
 
 SPI_InitTypeDef spi1;
 GPIO_InitTypeDef gpioA;
+
 
 void InitSPI1()
 {
@@ -17,9 +19,8 @@ void InitSPI1()
 	spi1.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_256;
 	SPI_Init(SPI1, &spi1);
 	
-	//SPI_SSOutputCmd(SPI1, ENABLE);
-	
-	//SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
+	SPI_I2S_ITConfig(SPI1, SPI_I2S_IT_RXNE, ENABLE);
+	NVIC_EnableIRQ(SPI1_IRQn);
 	
 	SPI_Cmd(SPI1, ENABLE);
 }
@@ -41,4 +42,13 @@ void InitGpioSpi()
 	gpioA.GPIO_OType = GPIO_OType_PP;
 	GPIO_Init(GPIOA, &gpioA);
 }
-	
+void SPI1_IRQHandler()
+{
+	if(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == RESET & SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == SET)
+		{
+			SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
+			for(int i = 0; i < 100; i++);
+			SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Reset);
+			data = SPI_I2S_ReceiveData(SPI1);	
+		}
+}

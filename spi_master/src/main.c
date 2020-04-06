@@ -23,6 +23,29 @@ void InitButtonUSER()
 	GPIO_Init(GPIOA, &gpioINT);
 }
 
+
+
+int main(void)
+{
+	SystemInit();
+	SystemCoreClockUpdate();
+	
+	InitGPIO();
+	InitSPI1();
+	InitTim3();
+	
+	InitTim2();
+	
+	InitButtonUSER();
+	
+	InitStructDef();
+	
+	while(1)
+	{
+
+	}
+}
+
 //void InitEXTI()
 //{
 //	EXTI_InitTypeDef INT;
@@ -47,26 +70,3 @@ void InitButtonUSER()
 //	NVIC_Init(&nvic);
 
 //}
-
-int main(void)
-{
-	SystemInit();
-	SystemCoreClockUpdate();
-	
-	InitGPIO();
-	InitSPI1();
-	InitTim3();
-	
-	InitTim2();
-	
-	InitButtonUSER();
-	
-	//InitStructDef(button);
-	
-	while(1)
-	{
-
-	}
-}
-
-

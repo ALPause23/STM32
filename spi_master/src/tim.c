@@ -56,50 +56,46 @@ void TIM2_IRQHandler(void)
 	if(TIM_GetITStatus(TIM2,TIM_IT_Update) != RESET)
 	{
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
-//		
-//		button.status_now = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0);	
-//		if((button.status_now == UP) && (button.status_after == 0))
-//		{
-//			if(button.count == false)
-//			{
-//					button.count = true;
-//			}
-//			else 
-//			{
-//				button.a++;
-//				if(button.a == 40)
-//				{
-//					button.a = 0;
-//					button.count = false;
-//					button.status_after = 1;
-//					
-//					EXTI_GenerateSWInterrupt(EXTI_Line0);
-//				}
-//			}
-//		}
-//		else if((button.status_now == DOWN) && (button.status_after == 1))
-//		{
-//			if(button.count == false)
-//			{
-//					button.count = true;
-//			}
-//			else 
-//			{
-//				button.b++;
-//				if(button.b == 40)
-//				{
-//					button.count = false;
-//					button.status_after = 0;
-//					button.b = 0;
-//					GPIO_ResetBits(GPIOC, GPIO_Pin_9);
-//					//EXTI_GenerateSWInterrupt(EXTI_Line0);
-//				}
-//			}
-//		}
-	if(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == SET)
+		
+		button.status_now = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0);	
+		if((button.status_now == UP) && (button.status_after == 0))
 		{
-			SPI_I2S_SendData(SPI1, 0x0A);
-			while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY));
+			if(button.count == false)
+			{
+					button.count = true;
+			}
+			else 
+			{
+				button.a++;
+				if(button.a == 40)
+				{
+					button.a = 0;
+					button.count = false;
+					button.status_after = 1;
+					GPIO_SetBits(GPIOC, GPIO_Pin_9);
+					EventForButton();
+					//EXTI_GenerateSWInterrupt(EXTI_Line0);
+				}
+			}
+		}
+		else if((button.status_now == DOWN) && (button.status_after == 1))
+		{
+			if(button.count == false)
+			{
+					button.count = true;
+			}
+			else 
+			{
+				button.b++;
+				if(button.b == 40)
+				{
+					button.count = false;
+					button.status_after = 0;
+					button.b = 0;
+					GPIO_ResetBits(GPIOC, GPIO_Pin_9);
+					//EXTI_GenerateSWInterrupt(EXTI_Line0);
+				}
+			}
 		}
 	}
 	TIM_Cmd(TIM2, ENABLE);
