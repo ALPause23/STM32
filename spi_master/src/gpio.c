@@ -1,6 +1,5 @@
 #include "gpio.h"
 
-
 GPIO_InitTypeDef gpioC;
 GPIO_InitTypeDef gpioC_led;
 

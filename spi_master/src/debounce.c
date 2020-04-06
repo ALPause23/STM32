@@ -1,14 +1,16 @@
 #include "debounce.h"
 
-void InitStructDef(struct StatusBounce x)
+struct StatusBounce button;
+
+void InitStructDef()
 {
-	x.up = false;
-	x.down = false;
+	button.up = false;
+	button.down = false;
 	
-	x.a = 0;
-	x.b = 0;
+	button.a = 0;
+	button.b = 0;
 	
-	x.status_now = 0;
-	x.status_after = 0;
-	x.count = false;
+	button.status_now = 0;
+	button.status_after = 0;
+	button.count = false;
 }

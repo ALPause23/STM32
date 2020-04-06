@@ -67,12 +67,13 @@ int main(void)
 	SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Reset);
 	while(1)
 	{
-		SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
-		for(int i = 0; i < 100; i++);
-		SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Reset);		
+				
 		if(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == RESET & SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == SET)
 		{
-			data = SPI_I2S_ReceiveData(SPI1);
+			SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
+			for(int i = 0; i < 100; i++);
+			SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Reset);
+			data = SPI_I2S_ReceiveData(SPI1);	
 		}
 	}
 }

@@ -3,4 +3,4 @@
 -IC:\Users\Evgeni\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include
 -IC:\Users\Evgeni\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 -D__UVISION_VERSION="529" -D_RTE_ -DSTM32F415xx
--o .\objects\spi.o --omf_browse .\objects\spi.crf --depend .\objects\spi.d "src\spi.c"
+-o .\objects\spi.o --depend .\objects\spi.d "src\spi.c"

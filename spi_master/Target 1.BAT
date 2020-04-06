@@ -53,4 +53,3 @@ SET CPU_CLOCK=0x007A1200
 "C:\Keil_v5\ARM\ARMCC\Bin\ArmAsm" --Via ".\objects\startup_stm32f415xx._ia"
 "C:\Keil_v5\ARM\ARMCC\Bin\ArmCC" --Via ".\objects\system_stm32f4xx.__i"
 "C:\Keil_v5\ARM\ARMCC\Bin\ArmLink" --Via ".\Objects\spi.lnp"
-"C:\Keil_v5\ARM\ARMCC\Bin\fromelf.exe" ".\Objects\spi.axf" --i32combined --output ".\Objects\spi.hex"

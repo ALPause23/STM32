@@ -12,7 +12,7 @@ void InitSPI1()
 	spi1.SPI_DataSize = SPI_DataSize_8b;
 	spi1.SPI_CPOL = SPI_CPOL_Low;
 	spi1.SPI_CPHA = SPI_CPHA_1Edge;
-	spi1.SPI_NSS = SPI_NSS_Soft;
+	spi1.SPI_NSS = SPI_NSS_Hard;
 	spi1.SPI_FirstBit = SPI_FirstBit_LSB;
 	spi1.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_256;
 	SPI_Init(SPI1, &spi1);
