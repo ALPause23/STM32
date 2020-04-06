@@ -1,0 +1,6 @@
+--cpu Cortex-M4.fp.sp --pd "__EVAL SETA 1" -g --16 --apcs=interwork 
+-I.\RTE\_Target_1
+-IC:\Users\Evgeni\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include
+-IC:\Users\Evgeni\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+--pd "__UVISION_VERSION SETA 529" --pd "_RTE_ SETA 1" --pd "STM32F415xx SETA 1"
+--list .\listings\startup_stm32f415xx.lst --xref -o .\objects\startup_stm32f415xx.o --depend .\objects\startup_stm32f415xx.d "RTE\Device\STM32F415RGTx\startup_stm32f415xx.s"
