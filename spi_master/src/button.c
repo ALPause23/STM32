@@ -19,12 +19,7 @@ void InitStructDef()
 
 int EventForButton()
 {
-		if(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == SET)
-		{
-			SPI_I2S_SendData(SPI1, 0x0A);
-			while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY));
-		}
-		//flags.ButtonIRQ = false;
+		
 		return 0;
 }
 
