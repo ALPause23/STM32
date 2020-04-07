@@ -36,8 +36,9 @@
 .\objects\main.o: .\lib\inc\stm32f4xx_dac.h
 .\objects\main.o: .\lib\inc\stm32f4xx_dcmi.h
 .\objects\main.o: .\lib\inc\stm32f4xx_fsmc.h
-.\objects\main.o: src\debounce.h
+.\objects\main.o: src\button.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\main.o: src\spi.h
 .\objects\main.o: src\tim.h
 .\objects\main.o: src\gpio.h
+.\objects\main.o: src\global.h

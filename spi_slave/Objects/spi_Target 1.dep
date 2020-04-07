@@ -1,6 +1,6 @@
 Dependencies for Project 'spi', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::ARMCC
-F (.\src\main.c)(0x5E8B15C6)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\lib\inc -I .\lib\src -I .\src -I .\lib-I.\RTE\_Target_1-IC:\Users\Evgeni\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\Evgeni\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx-o .\objects\main.o --depend .\objects\main.d)
+F (.\src\main.c)(0x5E8C1A49)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\lib\inc -I .\lib\src -I .\src -I .\lib-I.\RTE\_Target_1-IC:\Users\Evgeni\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\Evgeni\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx-o .\objects\main.o --depend .\objects\main.d)
 I (.\lib\inc\misc.h)(0x581CAA5C)
 I (.\lib\stm32f4xx.h)(0x5E8AD54A)
 I (C:\Users\Evgeni\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x5D25D706)
@@ -38,7 +38,7 @@ I (.\lib\inc\stm32f4xx_dcmi.h)(0x581CAA5C)
 I (.\lib\inc\stm32f4xx_fsmc.h)(0x581CAA5C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5D9B1868)
 I (src\debounce.h)(0x5E8597ED)
-I (src\spi.h)(0x5E86E24F)
+I (src\spi.h)(0x5E8C1D9A)
 I (src\tim.h)(0x5E86E09D)
 I (src\gpio.h)(0x5E86E09D)
 F (.\src\debounce.c)(0x5E8597ED)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\lib\inc -I .\lib\src -I .\src -I .\lib-I.\RTE\_Target_1-IC:\Users\Evgeni\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\Evgeni\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx-o .\objects\debounce.o --depend .\objects\debounce.d)
@@ -118,8 +118,8 @@ I (.\lib\inc\stm32f4xx_dac.h)(0x581CAA5C)
 I (.\lib\inc\stm32f4xx_dcmi.h)(0x581CAA5C)
 I (.\lib\inc\stm32f4xx_fsmc.h)(0x581CAA5C)
 F (.\src\gpio.h)(0x5E86E09D)()
-F (.\src\spi.c)(0x5E8B162E)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\lib\inc -I .\lib\src -I .\src -I .\lib-I.\RTE\_Target_1-IC:\Users\Evgeni\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\Evgeni\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx-o .\objects\spi.o --depend .\objects\spi.d)
-I (src\spi.h)(0x5E86E24F)
+F (.\src\spi.c)(0x5E8C1A29)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\lib\inc -I .\lib\src -I .\src -I .\lib-I.\RTE\_Target_1-IC:\Users\Evgeni\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\Evgeni\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx-o .\objects\spi.o --depend .\objects\spi.d)
+I (src\spi.h)(0x5E8C1D9A)
 I (.\lib\inc\stm32f4xx_spi.h)(0x581CAA5C)
 I (.\lib\stm32f4xx.h)(0x5E8AD54A)
 I (C:\Users\Evgeni\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x5D25D706)
@@ -156,7 +156,7 @@ I (.\lib\inc\stm32f4xx_dac.h)(0x581CAA5C)
 I (.\lib\inc\stm32f4xx_dcmi.h)(0x581CAA5C)
 I (.\lib\inc\stm32f4xx_fsmc.h)(0x581CAA5C)
 I (src\main.h)(0x5E8B14DC)
-F (.\src\spi.h)(0x5E86E24F)()
+F (.\src\spi.h)(0x5E8C1D9A)()
 F (.\src\tim.c)(0x5E8B1208)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\lib\inc -I .\lib\src -I .\src -I .\lib-I.\RTE\_Target_1-IC:\Users\Evgeni\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\Evgeni\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F407xx-o .\objects\tim.o --depend .\objects\tim.d)
 I (src\tim.h)(0x5E86E09D)
 I (.\lib\inc\stm32f4xx_tim.h)(0x581CAA5C)

@@ -388,16 +388,6 @@
               <FilePath>.\src\main.c</FilePath>
             </File>
             <File>
-              <FileName>debounce.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\debounce.h</FilePath>
-            </File>
-            <File>
-              <FileName>debounce.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\debounce.c</FilePath>
-            </File>
-            <File>
               <FileName>gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\gpio.c</FilePath>
@@ -426,6 +416,26 @@
               <FileName>tim.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\tim.h</FilePath>
+            </File>
+            <File>
+              <FileName>button.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\button.c</FilePath>
+            </File>
+            <File>
+              <FileName>button.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\button.h</FilePath>
+            </File>
+            <File>
+              <FileName>global.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\global.h</FilePath>
+            </File>
+            <File>
+              <FileName>global.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\global.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -30,7 +30,7 @@ int main(void)
 	SystemInit();
 	SystemCoreClockUpdate();
 	
-	InitSPI1();
+	InitSPI2();
 	InitTim3();
 	
 	InitTim2();

@@ -1,9 +1,10 @@
 --cpu=Cortex-M4.fp.sp
 ".\objects\main.o"
-".\objects\debounce.o"
 ".\objects\gpio.o"
 ".\objects\spi.o"
 ".\objects\tim.o"
+".\objects\button.o"
+".\objects\global.o"
 ".\objects\misc.o"
 ".\objects\stm32f4xx_adc.o"
 ".\objects\stm32f4xx_can.o"

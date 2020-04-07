@@ -1,48 +1,34 @@
 #include "misc.h"
-#include "debounce.h"
+#include "button.h"
 #include "spi.h"
 #include "tim.h"
 #include "gpio.h"
+#include "global.h"
 
 #define HSE_VALUE    ((uint32_t)8000000)
 
-uint16_t data;
-
-void InitButtonUSER()
-{
-	GPIO_InitTypeDef gpioINT;
-
-	
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
-	
-	
-	gpioINT.GPIO_Mode = GPIO_Mode_IN;
-	gpioINT.GPIO_Pin = GPIO_Pin_0;
-	gpioINT.GPIO_Speed = GPIO_Speed_50MHz;
-	gpioINT.GPIO_OType = GPIO_OType_PP;
-	GPIO_Init(GPIOA, &gpioINT);
-}
-
-
-
 int main(void)
 {
+	struct FlagsPrj *f;
+	f = &FLAG;
+	
 	SystemInit();
 	SystemCoreClockUpdate();
 	
 	InitGPIO();
 	InitSPI1();
-	InitTim3();
-	
-	InitTim2();
-	
-	InitButtonUSER();
+	InitSPI2();
 	
 	InitStructDef();
+	InitButtonUSER();
+	
+	InitTim3();
+	InitTim2();
 	
 	while(1)
 	{
-
+		if(f->ButtonIRQ == true)
+			f->ButtonIRQ = (bool)EventForButton();
 	}
 }
 
@@ -50,8 +36,7 @@ int main(void)
 //{
 //	EXTI_InitTypeDef INT;
 //	NVIC_InitTypeDef nvic;
-
-//	
+	
 //	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
 
 //	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA, EXTI_PinSource0);
@@ -68,5 +53,4 @@ int main(void)
 //	nvic.NVIC_IRQChannelSubPriority = 0;
 //	nvic.NVIC_IRQChannelCmd = ENABLE;
 //	NVIC_Init(&nvic);
-
 //}

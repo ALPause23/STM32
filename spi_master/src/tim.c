@@ -1,7 +1,9 @@
 #include "tim.h"
-#include "debounce.h"
+#include "button.h"
+#include "global.h"
 
 TIM_TimeBaseInitTypeDef base_timer;
+struct FlagsPrj *f;
 
 void InitTim3()
 {
@@ -32,6 +34,8 @@ void InitTim3()
 
 void InitTim2(void)
 {
+	f = &FLAG;	
+	
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
 	
 	RCC_HSEConfig(RCC_HSE_ON);
@@ -52,7 +56,7 @@ void InitTim2(void)
 
 void TIM2_IRQHandler(void)
 {
-	TIM_Cmd(TIM2, DISABLE);
+	//TIM_Cmd(TIM2, DISABLE);
 	if(TIM_GetITStatus(TIM2,TIM_IT_Update) != RESET)
 	{
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
@@ -73,7 +77,8 @@ void TIM2_IRQHandler(void)
 					button.count = false;
 					button.status_after = 1;
 					GPIO_SetBits(GPIOC, GPIO_Pin_9);
-					EventForButton();
+					//EventForButton();
+					f->ButtonIRQ = true;
 					//EXTI_GenerateSWInterrupt(EXTI_Line0);
 				}
 			}
@@ -98,5 +103,5 @@ void TIM2_IRQHandler(void)
 			}
 		}
 	}
-	TIM_Cmd(TIM2, ENABLE);
+	//TIM_Cmd(TIM2, ENABLE);
 }

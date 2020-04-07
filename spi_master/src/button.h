@@ -1,5 +1,5 @@
-#ifndef __DEBOUNCE_H__
-	#define __DEBOUNCE_H__
+#ifndef __BUTTON_H__
+	#define __BUTTON_H__
 	
 	#include "stm32f4xx.h"
 	#include "stdbool.h"
@@ -21,8 +21,10 @@
 	};
 	
 	extern struct StatusBounce button;
+	extern GPIO_InitTypeDef gpioINT;
 	
 	void InitStructDef();
-	void EventForButton();
+	int EventForButton();
+	void InitButtonUSER();
 
 #endif
