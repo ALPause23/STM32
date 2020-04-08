@@ -4,6 +4,8 @@
 struct StatusBounce button;
 GPIO_InitTypeDef gpioINT;
 
+struct FlagsPrj *f_in_button = &FLAG;
+
 void InitStructDef()
 {
 	button.up = false;
@@ -17,10 +19,17 @@ void InitStructDef()
 	button.count = false;
 }
 
-int EventForButton()
+uint8_t EventForButton()
 {
+	if(f_in_button->tim2_count_buttonUp == FLAG_DISABLE)
+		f_in_button->tim2_count_buttonUp = FLAG_ENABLE;
+	else
+	{
+		f_in_button->tim2_count_buttonUp = FLAG_DISABLE;
+		SendSPI1(f_in_button->tim2_count_buttonUp);
 		
-		return 0;
+	}
+	return FLAG_DISABLE;
 }
 
 void InitButtonUSER()
@@ -31,7 +40,5 @@ void InitButtonUSER()
 	gpioINT.GPIO_Pin = GPIO_Pin_0;
 	gpioINT.GPIO_Speed = GPIO_Speed_50MHz;
 	gpioINT.GPIO_OType = GPIO_OType_PP;
-	GPIO_Init(GPIOA, &gpioINT);
-	
-	
+	GPIO_Init(GPIOA, &gpioINT);	
 }

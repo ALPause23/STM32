@@ -37,3 +37,4 @@
 .\objects\spi.o: .\lib\inc\stm32f4xx_dac.h
 .\objects\spi.o: .\lib\inc\stm32f4xx_dcmi.h
 .\objects\spi.o: .\lib\inc\stm32f4xx_fsmc.h
+.\objects\spi.o: src\global.h

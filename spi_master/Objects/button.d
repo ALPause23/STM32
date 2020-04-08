@@ -37,4 +37,5 @@
 .\objects\button.o: .\lib\inc\stm32f4xx_dcmi.h
 .\objects\button.o: .\lib\inc\stm32f4xx_fsmc.h
 .\objects\button.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\button.o: src\spi.h
 .\objects\button.o: src\global.h

@@ -39,4 +39,5 @@
 .\objects\tim.o: .\lib\inc\stm32f4xx_fsmc.h
 .\objects\tim.o: src\button.h
 .\objects\tim.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\tim.o: src\spi.h
 .\objects\tim.o: src\global.h

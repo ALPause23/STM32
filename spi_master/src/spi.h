@@ -11,5 +11,6 @@
 	void InitSPI2();
 	void InitGpioSpi1();
 	void InitGpioSpi2();
+	void SendSPI1(uint16_t s);
 	
 #endif

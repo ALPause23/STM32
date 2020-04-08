@@ -3,6 +3,7 @@
 	
 	#include "stm32f4xx.h"
 	#include "stdbool.h"
+	#include "spi.h"
 
 	#define UP    1
 	#define DOWN  0
@@ -24,7 +25,7 @@
 	extern GPIO_InitTypeDef gpioINT;
 	
 	void InitStructDef();
-	int EventForButton();
+	uint8_t EventForButton();
 	void InitButtonUSER();
 
 #endif

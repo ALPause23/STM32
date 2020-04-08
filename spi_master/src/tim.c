@@ -3,38 +3,12 @@
 #include "global.h"
 
 TIM_TimeBaseInitTypeDef base_timer;
-struct FlagsPrj *f;
-
-void InitTim3()
-{
-	RCC_HSEConfig(RCC_HSE_ON);
-	RCC_SYSCLKConfig(RCC_SYSCLKSource_HSE);
-	
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
-	TIM_TimeBaseStructInit(&base_timer);
-	base_timer.TIM_CounterMode = TIM_CounterMode_Up;
-  base_timer.TIM_Prescaler = 8000;
-	base_timer.TIM_Period = 2000;
-	base_timer.TIM_ClockDivision = 0;
-  TIM_TimeBaseInit(TIM3, &base_timer);
-
-	TIM_OCInitTypeDef timer_oc;
-	TIM_OCStructInit(&timer_oc);
-	timer_oc.TIM_OCMode = TIM_OCMode_PWM1;
-	timer_oc.TIM_OutputState = TIM_OutputState_Enable;
-	timer_oc.TIM_Pulse = 1000;
-	timer_oc.TIM_OCPolarity = TIM_OCPolarity_High;
-	
-	TIM_OC3Init(TIM3, &timer_oc);
-	TIM_OC3PreloadConfig(TIM3,ENABLE);
-	TIM_ARRPreloadConfig(TIM3, ENABLE);
-  
-  TIM_Cmd(TIM3, ENABLE);
-}
+struct FlagsPrj *f_in_tim;
+uint16_t *count_ms = &time_count_ms;
 
 void InitTim2(void)
 {
-	f = &FLAG;	
+	f_in_tim = &FLAG;	
 	
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
 	
@@ -77,7 +51,7 @@ void TIM2_IRQHandler(void)
 					button.count = false;
 					button.status_after = 1;
 					GPIO_SetBits(GPIOC, GPIO_Pin_9);
-					f->ButtonIRQ = true;
+					f_in_tim->button_IRQ = FLAG_ENABLE;
 				}
 			}
 		}
@@ -97,8 +71,18 @@ void TIM2_IRQHandler(void)
 					button.b = 0;
 					GPIO_ResetBits(GPIOC, GPIO_Pin_9);
 					//EXTI_GenerateSWInterrupt(EXTI_Line0);
+					f_in_tim->button_IRQ = FLAG_ENABLE;
 				}
 			}
+		}
+		if(f_in_tim->tim2_count_buttonUp == FLAG_ENABLE)
+		{
+			count_ms++;
+		}
+		else *count_ms = 0;
+		if(f_in_tim->tim2_count_LED == FLAG_ENABLE)
+		{
+			GPIO_SetBits(GPIOC, GPIO_Pin_8);
 		}
 	}
 	TIM_Cmd(TIM2, ENABLE);

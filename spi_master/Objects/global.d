@@ -36,4 +36,3 @@
 .\objects\global.o: .\lib\inc\stm32f4xx_dac.h
 .\objects\global.o: .\lib\inc\stm32f4xx_dcmi.h
 .\objects\global.o: .\lib\inc\stm32f4xx_fsmc.h
-.\objects\global.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

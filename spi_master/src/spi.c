@@ -1,5 +1,5 @@
 #include "spi.h"
-//#include "main.h"
+#include "global.h"
 
 // Master SPI1
 SPI_InitTypeDef spi1;
@@ -9,8 +9,9 @@ GPIO_InitTypeDef gpioA;
 SPI_InitTypeDef spi2;
 GPIO_InitTypeDef gpioB;
 
-uint16_t data = 0;
+uint16_t *data_spi = &data;
 int i = 0;
+
 // Init Master SPI
 void InitSPI1()
 {
@@ -103,16 +104,17 @@ void SPI2_IRQHandler()
 			SPI_NSSInternalSoftwareConfig(SPI2, SPI_NSSInternalSoft_Set);
 			for(int i = 0; i < 100; i++);
 			SPI_NSSInternalSoftwareConfig(SPI2, SPI_NSSInternalSoft_Reset);
-			data = SPI_I2S_ReceiveData(SPI2);
-			if((data == 0x0A) && (i == 0))
-			{
-				GPIO_SetBits(GPIOC, GPIO_Pin_8);
-				i = 1;
-			}
-			else if ((data == 0x0A) && (i == 1))
-			{
-				GPIO_ResetBits(GPIOC, GPIO_Pin_8);
-				i = 0;
-			}
+			*data_spi = SPI_I2S_ReceiveData(SPI2);
+			SetFlag(FLAG_ENABLE);
+//			if(i)
+//			{
+//				GPIO_SetBits(GPIOC, GPIO_Pin_8);
+//				i = 1;
+//			}
+//			else if ((*data_spi == 0x0A) && (i == 1))
+//			{
+//				GPIO_ResetBits(GPIOC, GPIO_Pin_8);
+//				i = 0;
+//			}
 		}
 }
