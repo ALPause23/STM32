@@ -9,8 +9,8 @@
 
 int main(void)
 {
-	struct FlagsPrj *f_in_main;
-	f_in_main = &FLAG;
+	//struct FlagsPrj *f_in_main;
+	//f_in_main = &FLAG;
 
 	SystemInit();
 	SystemCoreClockUpdate();
@@ -27,8 +27,8 @@ int main(void)
 	
 	while(1)
 	{
-		if(f_in_main->button_IRQ == FLAG_ENABLE)
-			f_in_main->button_IRQ = EventForButton();
+		if(GetFlag(FLAG_BUTTON) == FLAG_ENABLE)
+			SelectFlag(FLAG_BUTTON, EventForButton()); 
 	}
 }
 

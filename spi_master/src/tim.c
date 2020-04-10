@@ -3,14 +3,10 @@
 #include "global.h"
 
 TIM_TimeBaseInitTypeDef base_timer;
-struct FlagsPrj *f_in_tim;
-uint16_t *count_ms = &time_count_ms;
 
 void InitTim2(void)
 {
-	f_in_tim = &FLAG;	
-	
-  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
 	
 	RCC_HSEConfig(RCC_HSE_ON);
 	RCC_SYSCLKConfig(RCC_SYSCLKSource_HSE);
@@ -51,7 +47,9 @@ void TIM2_IRQHandler(void)
 					button.count = false;
 					button.status_after = 1;
 					GPIO_SetBits(GPIOC, GPIO_Pin_9);
-					f_in_tim->button_IRQ = FLAG_ENABLE;
+					//f_in_tim->button_IRQ = FLAG_ENABLE;
+					//SelectFlag(FLAG_BUTTON, FLAG_ENABLE);
+					SelectFlag(FLAG_tim2_count_buttonUp, FLAG_ENABLE);
 				}
 			}
 		}
@@ -71,19 +69,17 @@ void TIM2_IRQHandler(void)
 					button.b = 0;
 					GPIO_ResetBits(GPIOC, GPIO_Pin_9);
 					//EXTI_GenerateSWInterrupt(EXTI_Line0);
-					f_in_tim->button_IRQ = FLAG_ENABLE;
+					//f_in_tim->button_IRQ = FLAG_ENABLE;
+					SelectFlag(FLAG_tim2_count_buttonUp, FLAG_DISABLE);
+					SelectFlag(FLAG_BUTTON, FLAG_ENABLE);
 				}
 			}
 		}
-		if(f_in_tim->tim2_count_buttonUp == FLAG_ENABLE)
+		if(GetFlag(FLAG_tim2_count_buttonUp) == FLAG_ENABLE)
 		{
-			count_ms++;
+			CountLedOn();
 		}
-		else *count_ms = 0;
-		if(f_in_tim->tim2_count_LED == FLAG_ENABLE)
-		{
-			GPIO_SetBits(GPIOC, GPIO_Pin_8);
-		}
+		else SetTimeCountMs(0);
 	}
 	TIM_Cmd(TIM2, ENABLE);
 }

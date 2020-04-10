@@ -9,7 +9,6 @@ GPIO_InitTypeDef gpioA;
 SPI_InitTypeDef spi2;
 GPIO_InitTypeDef gpioB;
 
-uint16_t *data_spi = &data;
 int i = 0;
 
 // Init Master SPI
@@ -104,8 +103,9 @@ void SPI2_IRQHandler()
 			SPI_NSSInternalSoftwareConfig(SPI2, SPI_NSSInternalSoft_Set);
 			for(int i = 0; i < 100; i++);
 			SPI_NSSInternalSoftwareConfig(SPI2, SPI_NSSInternalSoft_Reset);
-			*data_spi = SPI_I2S_ReceiveData(SPI2);
-			SetFlag(FLAG_ENABLE);
+			SetData(SPI_I2S_ReceiveData(SPI2));
+			
+			//SelectFlag(FLAG_ENABLE);
 //			if(i)
 //			{
 //				GPIO_SetBits(GPIOC, GPIO_Pin_8);

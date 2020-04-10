@@ -4,8 +4,6 @@
 struct StatusBounce button;
 GPIO_InitTypeDef gpioINT;
 
-struct FlagsPrj *f_in_button = &FLAG;
-
 void InitStructDef()
 {
 	button.up = false;
@@ -21,14 +19,7 @@ void InitStructDef()
 
 uint8_t EventForButton()
 {
-	if(f_in_button->tim2_count_buttonUp == FLAG_DISABLE)
-		f_in_button->tim2_count_buttonUp = FLAG_ENABLE;
-	else
-	{
-		f_in_button->tim2_count_buttonUp = FLAG_DISABLE;
-		SendSPI1(f_in_button->tim2_count_buttonUp);
-		
-	}
+	
 	return FLAG_DISABLE;
 }
 
